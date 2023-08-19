@@ -1,13 +1,10 @@
 import '../index.css';
 import Card from './Card';
-const products = [
-  
-];
-
 function Products(props) {
   return (
+    // console.log({props.products});
         <div className="scrollhorizontal">
-           {products?.map((products) => (
+           {props.products?.map((products) => (
           <Card
             name={products.name}
             image={products.image}

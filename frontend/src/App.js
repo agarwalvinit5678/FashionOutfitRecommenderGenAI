@@ -7,9 +7,9 @@ import ProductBox from './components/ProductBox';
 function App() {
   return (
     <div className="App">
-      {/* <PreviousChat text="bnm,"></PreviousChat>
-      <ProductBox></ProductBox>
-      <PreviousChat text="bnmjnjnfjnfjnj"></PreviousChat> */}
+      {/* <PreviousChat text="bnm,"></PreviousChat> */}
+      {/* <ProductBox products={products}></ProductBox> */}
+      {/* <PreviousChat text="bnmjnjnfjnfjnj"></PreviousChat> */}
       <div className='Prompt'>
         <Inputbox></Inputbox>
       </div>
