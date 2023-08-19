@@ -1,21 +1,24 @@
 import '../index.css';
 import Products from './Products';
+
 function ProductBox(props) {
   return (
     <div className='productsbox'>
-        <div className='butbox'>
-        <button className="navbut" type="submit">&#8249;</button>
-        <h2>Collection1</h2>
-        <button className="navbut" type="submit">&#8250;</button>
+      {props.products.map((collection, collectionIndex) => (
+        <div key={collectionIndex} className='collection'>
+          <div className='butbox'>
+            <button className="navbut" type="submit">&#8249;</button>
+            <h2>Collection {collectionIndex + 1}</h2>
+            <button className="navbut" type="submit">&#8250;</button>
+          </div>
+          {collection.map((category, categoryIndex) => (
+            <div key={categoryIndex}>
+              <h3>{categoryIndex === 0 ? 'Topwear' : categoryIndex === 1 ? 'Bottomwear' : categoryIndex === 2 ? 'Footwear' : 'Accessories'}</h3>
+              <Products products={category}></Products>
+            </div>
+          ))}
         </div>
-    <h3>Topwear</h3>
-    <Products></Products>
-    <h3>Bottomwear</h3>
-    <Products></Products>
-    <h3>Footwear</h3>
-    <Products></Products>
-    <h3>Accessories</h3>
-    <Products></Products>
+      ))}
     </div>
   );
 }
