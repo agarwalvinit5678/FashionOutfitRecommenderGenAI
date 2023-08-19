@@ -1,0 +1,180 @@
+body {
+  margin: 0;
+  background-color: whitesmoke;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.best-p1{
+  background-color: white;
+  height: 16.5rem;
+  width: 14rem;
+  border-color: rgba(128, 128, 128, 0.489);
+  border-style: dashed;
+  border-radius: 1rem;
+  margin: 0.25rem;
+}
+.best-p1 img {
+  margin: 0.5rem;
+  height: 10rem;
+  width: 10rem;
+}
+
+.price, .name-of-p{
+  display: flex;
+  justify-content: center;
+  margin: 0.2rem;
+  font-size: smaller;
+}
+
+.buy-now a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.seller a:hover {
+  color: #f05e8a;
+}
+.Buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+}
+.buy-now button{
+  padding: 0.3rem 0.5rem;
+  margin:0.1rem 0.25rem;
+  font-size: 0.65rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #FF9F00;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: 0px solid #f05e8a;
+  transition: 0.5s;
+}
+
+.add-cart button {
+  padding: 0.3rem 0.5rem;
+  margin:0.1rem 0.25rem;
+  font-size: 0.65rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #FB641B;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: 0px solid #f05e8a;
+  transition: 0.5s;
+}
+
+.buy-now button:hover{
+  background-color: var(--white);
+  font-weight: 550;
+}
+.add-cart button:hover {
+  background-color: white;
+  color: #FB641B;
+  font-weight: 550;
+}
+
+.buy-now button:hover a {
+  color: #FF9F00;
+}
+
+.scrollhorizontal{
+  display: flex;
+  overflow: auto;
+}
+.productsbox{
+  /* background-color: #f05e8a; */
+  overflow: auto;
+  /* border-style:dotted;
+  border-color: gray;
+  border-radius: 0.51rem;
+  border-width: 0.1rem; */
+  margin: auto;
+  width: 90%;
+  height: 70%;
+  overflow-x: hidden;
+}
+/* a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+} */
+.butbox{
+  margin: 1rem;
+  background-color: #2874F0;
+  box-shadow: 0.3rem 0.3rem 5px gray;
+
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  color: white;
+ 
+}
+.navbut{
+  cursor: pointer;
+  color: white;
+  /* display: inline-block; */
+  /* padding: 0rem 0.8rem; */
+  font-size: 2rem;
+  background-color: #dddddd00;
+  /* color: black; */
+  /* border-radius: 50%; */
+  margin: 0.5rem 5rem;
+  text-decoration: none;
+  /* display: inline-block; */
+  border-width: 0;
+  /* border-style:dotted ; */
+}
+.navbut:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.textbox{
+  font-size: large;
+  width: 100%;
+  height: 2rem;
+  margin: 1rem;
+}
+.Go-button{
+  position: absolute;
+  margin: 1rem;
+  bottom: 0.2rem;
+  right: 0px;
+  height: 2rem;
+}
+.Prompt{
+  width: 100%;
+  position: fixed;
+  bottom: 1rem;
+  
+}
+.chatt{
+  text-align: justify;
+  margin: 1rem 3rem;
+  
+}
+h3{
+text-align: left;
+margin-left: 1rem;
+}
