@@ -1,6 +1,6 @@
 import '../index.css';
 import Products from './Products';
-function ProductBox() {
+function ProductBox(props) {
   return (
     <div className='productsbox'>
         <div className='butbox'>
