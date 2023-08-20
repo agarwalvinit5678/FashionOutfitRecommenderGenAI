@@ -1,6 +1,9 @@
+Github Url: https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI
 # FashionOutfitRecommenderGenAI
 #### To start backend server:
+`pip install -r requirements.txt`
 
+`uvicorn main:app --reload`
 
 #### To start frontend server:
 `npm i`
