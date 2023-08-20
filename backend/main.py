@@ -4,7 +4,6 @@ from pydantic import BaseModel
 import requests
 import re
 from fastapi.middleware.cors import CORSMiddleware
-
 # Scraper imports
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -14,10 +13,6 @@ from bs4 import BeautifulSoup
 import codecs
 from webdriver_manager.chrome import ChromeDriverManager
 driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-
-
-# Hosted colab llm endpoint url
-url = ""
 
 
 # const arrays
@@ -40,6 +35,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# Make sure to import the necessary modules (FastAPI and CORSMiddleware) at the beginning of your script.
+
+# By adding the CORSMiddleware to your FastAPI application with the appropriate configuration, you'll allow requests from 'http://localhost:3000' to access your FastAPI endpoints without encountering CORS issues.
+
+# Remember to replace 'http://localhost:3000' with the actual origin of your React application. This configuration allows requests from that origin to access your FastAPI resources.
+
+
+
+
 
 
 # Check the AI response for whether it has suggested an outfit
@@ -93,7 +97,7 @@ def process(txt):
                 if name[0] == ' ':
                     name = name[1:]
 
-                # For accesories split into multiple from and/or
+                # For accesories split into multiple from conjunctions
                 if cloth == "Acc":
 
                     words = name.split(' ')
@@ -126,10 +130,8 @@ def process(txt):
     return ret
 
 
-
+# Function to scrap product info from Myntra by name and number
 def search(name, cnt) :
-    '''Function to scrap product info from Myntra by name and number'''
-    
     s = "https://www.myntra.com/"
     words = re.split(r'-| ', name)
     for word in words:
@@ -201,19 +203,14 @@ def to_links(outfits):
 
 
 
+# Hosted colab llm endpoint url
+colab_url = "https://8dea-34-126-96-241.ngrok.io/"
+
 @app.post("/prompt")
 def create(item: Item):
     dt = item.dict()
-    # res = requests.post(url,item)
-    res = ""
-    print("Enter/Paste your content. Ctrl-D or Ctrl-Z ( windows ) to save it.")
-    while True:
-        try:
-            line = input()
-        except EOFError:
-            break
-        res += line
-        res += '\n'
+    myobj = {"text":dt["text"]}
+    res = requests.post(colab_url,json=myobj).json()['msg']
     
     if check(res) == True :
         processed = process(res)
