@@ -1,3 +1,9 @@
+## Made for Flipkart GRiD 5.0 - Software Development Track
+### Team: Triplex
+• Vinit Agarwal (Indian Institute of Information Technology (IIIT), Pune)<br />
+• Arvind Khandelwal (Indian Institute of Information Technology (IIIT), Pune)<br />
+• Ishan Upadhyaua (Indian Institute of Information Technology (IIIT), Pune)<br />
+
 Github Url: https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI
 # FashionOutfitRecommenderGenAI
 #### To start backend server:
@@ -38,3 +44,5 @@ Github Url: https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI
 
 ### Screenshot of Webapp
 ![Screenshot](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/be7be6c7-30c6-44ea-b9e7-3c2de7e29dd0)
+
+
