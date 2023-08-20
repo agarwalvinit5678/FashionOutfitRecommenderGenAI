@@ -5,8 +5,8 @@
 • Ishan Upadhyaua (Indian Institute of Information Technology (IIIT), Pune)<br />
 
 [Github Link](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI) &emsp;
-[Pitch Deck](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/blob/main/TripleX%20Level%202%20Submission.pdf)
-
+[Pitch Deck](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/blob/main/TripleX%20Level%202%20Submission.pdf)&emsp;
+[Video Demo](https://youtu.be/BSG21PgW1E8)
 # FashionOutfitRecommenderGenAI
 #### To start backend server:
 `pip install -r requirements.txt`
