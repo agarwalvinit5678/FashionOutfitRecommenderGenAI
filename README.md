@@ -4,7 +4,9 @@
 • Arvind Khandelwal (Indian Institute of Information Technology (IIIT), Pune)<br />
 • Ishan Upadhyaua (Indian Institute of Information Technology (IIIT), Pune)<br />
 
-Github Url: https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI
+[Github Link](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI) &emsp;
+[Pitch Deck](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/blob/main/TripleX%20Level%202%20Submission.pdf)
+
 # FashionOutfitRecommenderGenAI
 #### To start backend server:
 `pip install -r requirements.txt`
@@ -44,5 +46,3 @@ Github Url: https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI
 
 ### Screenshot of Webapp
 ![Screenshot](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/be7be6c7-30c6-44ea-b9e7-3c2de7e29dd0)
-
-
