@@ -82,6 +82,8 @@ def process(txt):
                 # Create the name
                 name = ""
                 while ind1 < len(lines[ind]) and lines[ind][ind1] != ':' :
+                    if ind1 > 0 and lines[ind][ind1-1] == ' ' and lines[ind][ind1] == '-' :
+                        break
                     name += lines[ind][ind1]
                     ind1 += 1
 
@@ -236,7 +238,7 @@ def create(item: Item):
 
     '''Requeust in json format {"text":"prompt"}'''
     dt = item.dict()
-    print(dt["item"])
+    print(dt["text"])
 
     # Manual response input code
     res = ""
