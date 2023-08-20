@@ -34,9 +34,7 @@ Github Url: https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI
 • Enable user interaction for customization and feedback.<br />
 • Provide seamless, confidence-boosting user experience.<br />
 ### Flowchart
-![FASHION_GPT - Page 1](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/653a8829-4c79-4961-8acf-95fca0b86076)
+![FASHION_GPT - Page 1](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/929a8586-dea8-441f-8696-6fe956fe791b)
 
-
-### Snippet
-![Screenshot](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/4e72c04e-b143-4cf0-b45d-0812c85dde8c)
-
+### Screenshot of Webapp
+![Screenshot](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/be7be6c7-30c6-44ea-b9e7-3c2de7e29dd0)
