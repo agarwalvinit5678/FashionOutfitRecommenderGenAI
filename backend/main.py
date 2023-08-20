@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import requests
 import re
+from fastapi.middleware.cors import CORSMiddleware
 
 # Scraper imports
 from selenium import webdriver
@@ -29,6 +30,16 @@ class Item(BaseModel):
     text: str
 
 app = FastAPI()
+
+origins = ["http://localhost:3000"]  # Add other origins if needed
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # Check the AI response for whether it has suggested an outfit
@@ -82,7 +93,7 @@ def process(txt):
                 if name[0] == ' ':
                     name = name[1:]
 
-                # For accesories split into multiple from conjunctions
+                # For accesories split into multiple from and/or
                 if cloth == "Acc":
 
                     words = name.split(' ')
@@ -115,8 +126,10 @@ def process(txt):
     return ret
 
 
-# Function to scrap product info from Myntra by name and number
+
 def search(name, cnt) :
+    '''Function to scrap product info from Myntra by name and number'''
+    
     s = "https://www.myntra.com/"
     words = re.split(r'-| ', name)
     for word in words:
