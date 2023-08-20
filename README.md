@@ -42,8 +42,7 @@
 • Enable user interaction for customization and feedback.<br />
 • Provide seamless, confidence-boosting user experience.<br />
 ### Flowchart
-![FASHION_GPT - Page 1 (1)](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/0258f355-b415-4e23-913d-7e2ec3b72bf6)
-
+<img src="https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/0258f355-b415-4e23-913d-7e2ec3b72bf6"  width="80%" >
 
 ### Screenshot of Webapp
-![Screenshot](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/be7be6c7-30c6-44ea-b9e7-3c2de7e29dd0)
+<img src="https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/be7be6c7-30c6-44ea-b9e7-3c2de7e29dd0"  width="80%" >
