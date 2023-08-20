@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import requests
 import re
 from fastapi.middleware.cors import CORSMiddleware
+
 # Scraper imports
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -26,8 +27,8 @@ class Item(BaseModel):
 
 app = FastAPI()
 
+# Define origins and middleware
 origins = ["http://localhost:3000"]  # Add other origins if needed
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -35,19 +36,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# Make sure to import the necessary modules (FastAPI and CORSMiddleware) at the beginning of your script.
-
-# By adding the CORSMiddleware to your FastAPI application with the appropriate configuration, you'll allow requests from 'http://localhost:3000' to access your FastAPI endpoints without encountering CORS issues.
-
-# Remember to replace 'http://localhost:3000' with the actual origin of your React application. This configuration allows requests from that origin to access your FastAPI resources.
 
 
-
-
-
-
-# Check the AI response for whether it has suggested an outfit
 def check(txt):
+    '''Check the AI response for whether it has suggested an outfit'''
 
     lines = txt.splitlines()
     pat = "Outfit 1:"
@@ -58,10 +50,10 @@ def check(txt):
         
     return False
         
-
-# Process the AI response to convert it only into array of dicts of names
+ 
 def process(txt):
-    
+    '''Process the AI response to convert it only into array of dicts of names'''
+
     lines = txt.splitlines()
     ind = 0
     ret = []
@@ -99,18 +91,23 @@ def process(txt):
 
                 # For accesories split into multiple from conjunctions
                 if cloth == "Acc":
-
+                
                     words = name.split(' ')
                     arr = []
                     curr = ""
 
+                    # Don't add conjunctions in array
                     for word in words:
+
                         if word == "and" or word == "or" or word == ',':
+
                             if curr[-1] == ' ':
                                 curr = curr[0:-1]
                             arr.append(curr)
                             curr = ""
+
                         else :
+
                             curr += word
                             curr += ' '
 
@@ -121,6 +118,7 @@ def process(txt):
                     ret_dict[cloth] = arr
 
                 else : 
+
                     ret_dict[cloth] = name
             
             ret.append(ret_dict)
@@ -130,18 +128,25 @@ def process(txt):
     return ret
 
 
-# Function to scrap product info from Myntra by name and number
+
 def search(name, cnt) :
+    '''Function to scrap product info from Myntra by name and number'''
+
+    # Construct myntra url
     s = "https://www.myntra.com/"
+
     words = re.split(r'-| ', name)
+
     for word in words:
+
         if word.lower() in remove:
             continue
         s += word.lower()
         s += '-'
+
     val = s[:-1]
 
-
+    # Load web page from url
     wait = WebDriverWait(driver, 10)
     driver.get(val)
     get_url = driver.current_url
@@ -154,34 +159,54 @@ def search(name, cnt) :
 
     arr = []
 
+    # If no products find on given url return None
     if table == None:
         print(val)
         return arr
 
+    # Debug currently processing item
     print(name)
+
+    # 
     for row in table.findAll('li', attrs= {'class':'product-base'}) :
+
         rDict = {}
+
+        # Image
         img = row.find('picture', attrs = {'class':'img-responsive'}).source['srcset'].split(" ,")[0]
         while img[0] != 'h':
             img = img[1:]
         rDict['img'] = img
+        
+        # Brand
         rDict['brand'] = row.find('h3', attrs={'class':'product-brand'}).text
+
+        # Product
         prod = row.find('h4', attrs={'class':'product-product'}).text
         if len(prod) > 25 :
             prod = prod[0:25]
             prod += "..."
         rDict['product'] = prod
+
+        # Price
         price = row.find('span', attrs={'class':'product-discountedPrice'})
         if price == None:
             price = row.find('div', attrs={'class':'product-price'})
         rDict['price'] = price.text
+
+        # Link
         link = "https://www.myntra.com/"
         link += row.find('a')['href']
         rDict['link'] = link
+
+        # Add current item links to array
         arr.append(rDict)
+        
+        # Return max of mentioned items
         cnt -= 1
         if cnt == 0:
             break
+
     return arr
 
 
@@ -204,25 +229,46 @@ def to_links(outfits):
 
 
 # Hosted colab llm endpoint url
-colab_url = "https://8dea-34-126-96-241.ngrok.io/"
+colab_url = ""
 
 @app.post("/prompt")
 def create(item: Item):
+
+    '''Requeust in json format {"text":"prompt"}'''
     dt = item.dict()
-    myobj = {"text":dt["text"]}
-    res = requests.post(colab_url,json=myobj).json()['msg']
-    
+    print(dt["item"])
+
+    # Manual response input code
+    res = ""
+    while True:
+        try:
+            line = input()
+        except EOFError:
+            break
+        res += line
+        res += '\n'
+
+    # Automated AI post request on llm endpoint
+        # myobj = {"text":dt["text"]}
+        # res = requests.post(colab_url,json=myobj).json()['msg']
+
+    # If the response is a recommendation
     if check(res) == True :
+
         processed = process(res)
 
         links = to_links(processed)
 
+        # Return object containing all links of Outfits
         return {
             "message":res,
             "suggest":"true",
             "links":links
         }
+    
     else :
+
+        # Return object only with message
         return {
             "message":res,
             "suggest":"false"
