@@ -30,4 +30,10 @@
 • Consider body type, occasion, region, and age for diverse suggestions.<br />
 • Enable user interaction for customization and feedback.<br />
 • Provide seamless, confidence-boosting user experience.<br />
+### Flowchart
+![FASHION_GPT - Page 1](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/653a8829-4c79-4961-8acf-95fca0b86076)
+
+
+### Snippet
+![Screenshot](https://github.com/agarwalvinit5678/FashionOutfitRecommenderGenAI/assets/92209640/4e72c04e-b143-4cf0-b45d-0812c85dde8c)
 
