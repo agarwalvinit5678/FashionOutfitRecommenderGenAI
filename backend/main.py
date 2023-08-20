@@ -15,10 +15,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 
-# Hosted colab llm endpoint url
-url = ""
-
-
 # const arrays
 fit = ["Top","Bottom","Foot","Acc"]
 remove = ["in","or","a","or","like","the","light","neutral","color"]
@@ -207,19 +203,14 @@ def to_links(outfits):
 
 
 
+# Hosted colab llm endpoint url
+colab_url = "https://8dea-34-126-96-241.ngrok.io/"
+
 @app.post("/prompt")
 def create(item: Item):
     dt = item.dict()
-    # res = requests.post(url,item)
-    res = ""
-    print("Enter/Paste your content. Ctrl-D or Ctrl-Z ( windows ) to save it.")
-    while True:
-        try:
-            line = input()
-        except EOFError:
-            break
-        res += line
-        res += '\n'
+    myobj = {"text":dt["text"]}
+    res = requests.post(colab_url,json=myobj).json()['msg']
     
     if check(res) == True :
         processed = process(res)
