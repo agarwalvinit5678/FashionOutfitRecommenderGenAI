@@ -238,21 +238,10 @@ def create(item: Item):
 
     '''Requeust in json format {"text":"prompt"}'''
     dt = item.dict()
-    print(dt["text"])
 
-    # Manual response input code
-    res = ""
-    while True:
-        try:
-            line = input()
-        except EOFError:
-            break
-        res += line
-        res += '\n'
-
-    # Automated AI post request on llm endpoint
-        # myobj = {"text":dt["text"]}
-        # res = requests.post(colab_url,json=myobj).json()['msg']
+    # AI post request on llm endpoint
+    myobj = {"text":dt["text"]}
+    res = requests.post(colab_url,json=myobj).json()['msg']
 
     # If the response is a recommendation
     if check(res) == True :
