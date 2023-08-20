@@ -171,10 +171,65 @@ a:hover {
 }
 .chatt{
   text-align: justify;
-  margin: 1rem 3rem;
+  padding: 1rem 3rem;
+  display: flex;
   
 }
 h3{
 text-align: left;
 margin-left: 1rem;
+}
+/* Add styles for the scrollable-container */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Set to 100% of viewport height */
+  overflow: hidden;
+}
+
+.responses-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.input-container {
+  position: sticky;
+  bottom: 0;
+  background-color: white; /* Add a background color to separate from responses */
+  padding: 10px;
+}
+.prompt-text {
+  color: rgb(87, 46, 46); /* Apply your desired styling to distinguish prompts */
+}
+.ai-response
+{
+  background-color: rgb(231, 226, 226);
+}
+/* Navbar.css */
+/* Navbar.css */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.navbar-logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-product-name {
+  font-size: 1.2rem;
+  font-weight: bold;
 }

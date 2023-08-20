@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import requests
 import re
-
+from fastapi.middleware.cors import CORSMiddleware
 # Scraper imports
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -29,6 +29,25 @@ class Item(BaseModel):
     text: str
 
 app = FastAPI()
+
+origins = ["http://localhost:3000"]  # Add other origins if needed
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+# Make sure to import the necessary modules (FastAPI and CORSMiddleware) at the beginning of your script.
+
+# By adding the CORSMiddleware to your FastAPI application with the appropriate configuration, you'll allow requests from 'http://localhost:3000' to access your FastAPI endpoints without encountering CORS issues.
+
+# Remember to replace 'http://localhost:3000' with the actual origin of your React application. This configuration allows requests from that origin to access your FastAPI resources.
+
+
+
+
 
 
 # Check the AI response for whether it has suggested an outfit
