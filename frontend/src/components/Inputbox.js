@@ -1,66 +1,60 @@
 import '../index.css';
-import axios from "axios";
-import { useState } from 'react';
 import PreviousChat from './Previouschat';
 import ProductBox from './ProductBox';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function Inputbox() {
-  const [prompt, setPrompt] = useState("");
-  const [chatMessages, setChatMessages] = useState([]);
+  const [prompt, setPrompt] = useState('');
+  const [responses, setResponses] = useState([]);
 
-  function postdata(e) {
+  const postdata = (e) => {
     e.preventDefault();
 
     axios.post('api/getprompt', {
       prompt: prompt,
     })
     .then((response) => {
-      console.log("Prompt posted");
-      console.log(response);
+      console.log('Prompt posted');
+      console.log(response.data); // Make sure to access the response data
 
-      // Handle both string and array responses
-      if (typeof response.data === "string") {
-        setChatMessages(prevMessages => [...prevMessages, { type: "string", message: response.data }]);
-      } else if (Array.isArray(response.data)) {
-        setChatMessages(prevMessages => [...prevMessages, { type: "array", message: response.data }]);
-      }
-
-      // Clear the prompt input
-      setPrompt("");
+      // Add the new response to the list of responses
+      setResponses(prevResponses => [...prevResponses, response.data]);
     })
     .catch((error) => {
       console.log(error);
     });
-  } 
+  };
 
   return (
-    <div className='containerinput' >
-      <div className="messages-container">
-        {chatMessages.map((message, index) => (
-          <MessageRenderer key={index} message={message} />
-        ))}
-      </div>
-      <form className="search-wrapper cf" onSubmit={postdata}>
+    <div className='containerinput'>
+      <form className='search-wrapper cf' onSubmit={postdata}>
         <input
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          className="textbox"
-          type="text"
-          placeholder="Prompt"
+          className='textbox'
+          type='text'
+          placeholder='Prompt'
         />
-        <button className="Go-button" type="submit">Go</button>
+        <button className='Go-button' type='submit'>
+          Go
+        </button>
       </form>
+
+      {responses.map((response, index) => (
+        <ResponseComponent key={index} response={response} />
+      ))}
     </div>
   );
 }
 
-const MessageRenderer = ({ message }) => {
-  if (message.type === "string") {
-    return <PreviousChat text={message.message} />;
-  } else if (message.type === "array") {
-    return <ProductBox array={message}/>;
-  }
-  return null; // Handle other cases if needed
+function ResponseComponent({ response }) {
+  return (
+    <div>
+      <PreviousChat text={response.message} />
+      {response.suggest && <ProductBox array={response.links} />}
+    </div>
+  );
 }
 
 export default Inputbox;

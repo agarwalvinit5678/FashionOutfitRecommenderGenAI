@@ -4,6 +4,10 @@ function Card(props) {
         <div className="best-p1">
             <img src={props.image} alt="img"/>
             <div className="best-p1-txt">
+                
+                <div className="price">
+                   {props.brand}
+                </div>
                 <div className="name-of-p">
                     {props.name}
                 </div>

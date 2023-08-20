@@ -6,9 +6,10 @@ function Products(props) {
         <div className="scrollhorizontal">
            {props.products?.map((products) => (
           <Card
-            name={products.name}
-            image={products.image}
+            name={products.product}
+            image={products.img}
             price={products.price}
+            brand={products.brand}
             link={products.link}
           />
         ))}
