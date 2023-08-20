@@ -11,8 +11,8 @@ function Inputbox() {
   const postdata = (e) => {
     e.preventDefault();
 
-    axios.post('api/getprompt', {
-      prompt: prompt,
+    axios.post('http://127.0.0.1:8000/prompt', {
+      text: prompt,
     })
     .then((response) => {
       console.log('Prompt posted');
